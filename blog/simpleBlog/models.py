@@ -3,7 +3,7 @@ import datetime
 
 class Post(models.Model):
 	title = models.CharField(max_length=50)
-	content = models.CharField(max_length=200)
+	content = models.CharField(max_length=5000)
 	pub_date = models.DateTimeField('date published')
 	likes = models.IntegerField(default=1)
 

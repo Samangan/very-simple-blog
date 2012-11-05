@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     # TODO: posts by from this month view
     # TODO: posts by from this year view
     # TODO: posts by from this day view 
+    # TODO: implement page system
 
     url(r'^(?P<post_id>\d+)/vote/$', 'simpleBlog.views.vote'),
 )
