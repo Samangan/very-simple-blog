@@ -8,8 +8,12 @@ h1{
 	font-size: 60px;
 }
 
+h1 small{
+	display:block;
+	margin-top: 15px;
+}
 body{
-	max-width: 960px;
+	max-width: 800px;
 	margin-right: auto;
 	margin-left: auto;
 	display:block;	
@@ -18,7 +22,7 @@ body{
 #content{
 	margin-right: auto;
 	margin-left: auto;
-	max-width: 700px;
+	max-width: 800px;
 }
 
 h2{
@@ -35,14 +39,27 @@ h2{
 	margin-left: 4.5%;
 	border-style: solid;
 	border-width: 2px;
-	border-color: #4E664E;	
 	border-radius: 28px;
 	background-color: #F0F0F0;	
 	margin-bottom:20px;
 }
 
-
-#content #post #post-date{
+#comment{
+	padding: 25px;
+	float:left;
+	width: 85%;
+	margin-top: 15px;
+	margin-left: 4.5%;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 28px;
+	background-color: #F0F0F0;	
+	margin-bottom:20px;
+}
+#add-comment{
+	margin-left: 80px;
+}
+#post-date{
 	color:#A4A4A4;
 }
 
@@ -50,7 +67,7 @@ h2{
 	float:right;
 }
 
-#content #post #post-content{
+#post-content{
 	margin-left: 3.5%;
 	margin-right: 2.5%;
 	margin-top: 3px;

@@ -17,7 +17,7 @@ class Post(models.Model):
 		return self.pub_date.date().year == datetime.date.today().year
 
 	def was_published_this_month(self):
-		return was_published_this_year and self.pub_date.date().month == datetime.date.today().month 
+		return self.was_published_this_year() and self.pub_date.date().month == datetime.date.today().month 
 
 	was_published_today.short_description = "Published today?"
 	was_published_this_month.short_description = "Published this month?"
