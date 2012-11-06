@@ -19,7 +19,7 @@ def comment(request, post_id):
 		c.save()
 		return HttpResponseRedirect(reverse('post_detail', args=(p.id,)))
 	else:			
-		# Redisplay the poll voting form.
+		# Redisplay the post commenting form.
 		return render_to_response('simpleBlog/detail.html', {
 			'post': p, 
 			'error_message': "Commenting Failed! You didn't enter any text.",
