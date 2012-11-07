@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xml:lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Harry Hull" />
+		<meta name="keywords" content="blag blog" />
+
+		<link href="http://127.0.0.1:8000/media/style/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="http://127.0.0.1:8000/media/style/style.css" rel="stylesheet" type="text/css">
+
+	<title>Shitty Blog</title>		
+	</head>
+	<body>
+	<header>		
+		<div class="page-header">		
+			<h1>Shitty Blog<small>Posts made this month</small></h1>
+		</div>
+		<nav id='nav'>
+			<ul class="nav nav-tabs">
+				<li><a href="../">All</a></li>
+				<li><a href="../today/index.html">Today</a></li>
+		        <li class="active"><a href="">Month</a></li>
+		        <li><a href="../year/index.html">Year</a></li> 
+		    </ul>
+		</nav>
+	</header>
+	
+	<div id="content">
+		{% if posts_to_check %}
+			{% for post in posts_to_check %}
+
+				{% if post.was_published_this_month %}
+		        <div id="post"><div id="post-likes">
+		        		<div class="well well-small">Useless internet points: <span class="badge badge-info">{{post.likes}}</span></div>
+		        	</div><div id="post-title"><a href="/simpleBlog/{{ post.id }}/"><h2>{{ post.title }}</h2></div></a>	        	
+		        	<div id="post-date">
+		        		{{post.pub_date}}
+		        	</div>
+		        	<div id="post-content">
+		        		{{post.content|linebreaks}}
+		        	</div>
+		        </div>
+		        {% endif %}
+		    {% endfor %}
+		{% else %}
+		    <p>No posts are available.</p>
+		{% endif %}
+	</div>
+	</body>
+</html>

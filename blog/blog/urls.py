@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 	url(r'^simpleBlog/', include('simpleBlog.urls')),
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+	
 )

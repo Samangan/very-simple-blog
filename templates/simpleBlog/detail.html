@@ -1,0 +1,61 @@
+<!doctype html> <html lang="en" xml:lang="en">     <head>         <meta
+charset="UTF-8" />          <meta name="author" content="Harry Hull" />
+<meta name="keywords" content="blag blog" />         <link
+href="http://127.0.0.1:8000/media/style/bootstrap.css" rel="stylesheet"
+type="text/css">         <link
+href="http://127.0.0.1:8000/media/style/style.css" rel="stylesheet"
+type="text/css">     <title>Shitty Blog</title>           </head>     <body>
+<header>                 <div class="page-header">
+	<h1>Shitty Blog<small>Currently reading: {{ post.title }}</small></h1>
+</div>         <nav id='nav'>         <ul class="breadcrumb">
+<li><a href="../">All Posts</a><span class="divider">/</span></li>
+<li class="active"><a href="">{{post.title}}</a><span
+	class="divider">/</span></li>             <li><a
+	href="#add-comment">{{post.title}} comments</a></li>           </ul>
+</nav>     </header>     
+<div id="content">         
+	{% if error_message %}<div class="alert alert-error">
+	{{ error_message }}</strong></p>
+</div>
+{% endif %}
+
+<div id="post">
+	<div id="post-likes">                 
+		<div class="well well-small">Useless internet points: <span class="badge badge-info">
+			{{post.likes}}</span>
+			<a href="vote/"><img src="http://127.0.0.1:8000/media/images/arrow.png" alt="UIP" height="22" width="28"></a>
+		</div>             
+	</div>
+	<div id="post-title">
+		<a	href="/simpleBlog/{{ post.id }}/"><h2>{{ post.title }}</h2>
+	</div></a>
+	<div id="post-date">                 
+		{{post.pub_date}}             
+	</div>
+	<div id="post-content">                 
+		{{post.content|linebreaks}}             
+	</div>
+</div>
+
+<div id="add-comment">
+	<form class="navbar-form pull-left" action="{% url post_comment post.id %}" method="post">
+		{% csrf_token %}
+		<input type="text" id="comment-name" name="author"placeholder="Enter a name!"/>
+		<textarea id="comment-form" rows="10" cols="40" class="field span7" name="comment" placeholder="Enter a comment!"></textarea>
+		<button id="comment-btn" type="submit" class="btn">Add Comment</button>
+	</form>
+</div>
+
+<div id="comments">
+	{% for comment in post.comment_set.all %}
+	<div id="comment">
+		<h3>{{comment.author}} Says:</h3>
+		<div id="post-date">{{comment.pub_date.date}}</div>
+		<div id="post-content"> {{comment.content|linebreaks}}</div>
+	</div>
+	{% endfor %}
+</div>
+</div>
+
+</body>
+</html>
