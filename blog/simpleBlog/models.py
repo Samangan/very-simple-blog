@@ -3,7 +3,7 @@ import datetime
 
 class Post(models.Model):
 	title = models.CharField(max_length=50)
-	content = models.CharField(max_length=5000)
+	content = models.TextField(max_length=5000)
 	pub_date = models.DateTimeField('date published')
 	likes = models.IntegerField(default=1)
 
@@ -24,7 +24,8 @@ class Post(models.Model):
 	was_published_this_year.short_description = "Published this year?"
 
 class Comment(models.Model):
-	content = models.CharField(max_length=200)
+	author = models.CharField(max_length=20, default='Anon')
+	content = models.TextField(max_length=200)
 	pub_date = models.DateTimeField('date published')
 	parent = models.ForeignKey(Post)
 

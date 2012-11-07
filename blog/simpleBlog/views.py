@@ -14,7 +14,12 @@ def vote(request, post_id):
 def comment(request, post_id):
 	p = get_object_or_404(Post, pk=post_id)
 	comment_content = request.POST['comment']
-	c = Comment(content=comment_content, pub_date=datetime.date.today(), parent=p)
+	comment_author = request.POST['author']
+	c = Comment(author=comment_author, content=comment_content, pub_date=datetime.date.today(), parent=p)
+	
+	if not c.author:
+		c.author = "Anon"
+
 	if c.content:
 		c.save()
 		return HttpResponseRedirect(reverse('post_detail', args=(p.id,)))

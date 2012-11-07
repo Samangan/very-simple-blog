@@ -44,6 +44,14 @@ h2{
 	margin-bottom:20px;
 }
 
+#comment-btn{
+	float:left;
+}
+
+#comment-name{
+	float:left;
+}
+
 #comment{
 	padding: 25px;
 	float:left;
@@ -54,10 +62,11 @@ h2{
 	border-width: 2px;
 	border-radius: 28px;
 	background-color: #F0F0F0;	
-	margin-bottom:20px;
+	margin-bottom:12px;
 }
-#add-comment{
+#content #add-comment{
 	margin-left: 80px;
+	margin-bottom:50px;
 }
 #post-date{
 	color:#A4A4A4;
