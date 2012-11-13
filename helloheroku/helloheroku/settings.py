@@ -1,5 +1,7 @@
-# Django settings for blog project.
+# Django settings for helloheroku project.
 import os.path
+
+PROJECT_DIR = os.path.dirname(__file__) 
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,7 +14,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqllite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': '',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -46,7 +48,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = 'C:/Users/harry/Documents/work/Programming Tutorials/Django/Blog/very-simple-blog/media/'
+MEDIA_ROOT = os.path.join(PROJECT_DIR, "../media")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -79,7 +81,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '5otpi4j$8$=^*pfns)rl&amp;sjw4m6mt0z86mhktx@*ej0ss-$y$y'
+SECRET_KEY = 'Obviously not the key :D'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -98,17 +100,14 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'blog.urls'
+ROOT_URLCONF = 'helloheroku.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'blog.wsgi.application'
+WSGI_APPLICATION = 'helloheroku.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    'C:/Users/harry/Documents/work/Programming Tutorials/Blog/very-simple-blog/blog/templates',
-    'C:/Users/harry/Documents/work/Programming Tutorials/Django/templates'
+    os.path.join(PROJECT_DIR, "../templates"),
+    os.path.join(PROJECT_DIR, "../templates/admin"),
 )
 
 INSTALLED_APPS = (
@@ -118,10 +117,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simpleBlog',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'simpleBlog',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -152,3 +151,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
